@@ -14,6 +14,40 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
+# Análise da Evolução do Uso de Estruturas de Dados no Repositório `transformers` (Hugging Face)
+
+Este gráfico mostra a evolução do uso de quatro estruturas de dados fundamentais em Python (`list`, `tuple`, `dictionary`, `set`) ao longo dos anos no repositório `huggingface/transformers`, analisado entre 2020 e 2025.
+
+## 📈 Evolução Temporal
+
+- **List**: É a estrutura de dados com maior crescimento. O uso de listas aumentou significativamente após 2021, passando de cerca de 7.000 ocorrências para mais de 45.000 em 2025. Isso indica que listas são amplamente utilizadas para armazenar e manipular coleções de dados mutáveis no projeto — possivelmente em datasets, resultados intermediários e operações em lotes (batches).
+
+- **Tuple**: Também apresentou um crescimento constante, alcançando aproximadamente 32.000 ocorrências em 2025. O uso de tuplas (estruturas imutáveis) pode estar relacionado a retornos de funções e estruturas padronizadas para evitar efeitos colaterais.
+
+- **Dictionary**: Com um crescimento mais moderado, atingiu cerca de 14.000 ocorrências. Os dicionários são essenciais para representar pares chave-valor e possivelmente estão sendo usados em configurações, parâmetros de modelos, armazenamento de metadados e JSONs manipulados ao longo do pipeline.
+
+- **Set**: É a única estrutura que apresenta uma tendência de queda a partir de 2023, estabilizando abaixo de 2.000 ocorrências em 2025. Isso pode indicar um desuso consciente, talvez por razões de performance, legibilidade ou por serem menos necessárias nos padrões atuais do código.
+
+## ✅ Boas Práticas Observadas
+
+- A predominância de `list`, `tuple` e `dictionary` reflete boas práticas, já que essas são estruturas amplamente adotadas na comunidade Python por sua clareza e desempenho.
+- A queda no uso de `set` pode ser interpretada como uma decisão de engenharia consciente, uma vez que o uso de `set` pode causar confusão ou não oferecer vantagens significativas em muitos casos.
+
+## 📌 Possíveis Causas para Mudanças
+
+- A curva acentuada de crescimento em `list` e `tuple` após 2021 pode estar ligada à reestruturação do código do repositório para suportar novos modelos e pipelines, como a introdução de modelos multimodais e melhorias no framework `Trainer`.
+- Pode haver também um esforço da comunidade para padronizar a manipulação de dados e outputs, optando por estruturas mais previsíveis e documentadas.
+- A documentação e os PRs do repositório frequentemente recomendam práticas que favorecem `tuple` para retornos múltiplos e `dict` para flexibilidade, o que pode ter influenciado essas tendências.
+
+## 🔍 Recomendações
+
+- Investigar as PRs e commits principais entre 2021 e 2023 para verificar se há refatorações em massa que motivaram o aumento.
+- Explorar o uso interno das listas e dicionários para entender se há padrões que podem ser otimizados ou abstraídos.
+- Avaliar se o desuso de `set` tem impactos em performance ou legibilidade e considerar seu uso apenas em casos específicos, como verificação de unicidade.
+
+---
+
+
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://huggingface.co/datasets/huggingface/documentation-images/raw/main/transformers-logo-dark.svg">
